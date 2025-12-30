@@ -13,18 +13,20 @@ import Products from "../pages/Admin/Products";
 import AdminOrders from "../pages/Admin/Orders";
 
 import ProtectedRoute from "../components/layout/ProtectedRoute";
+import Landing from "@/pages/Landing";
 
 const AppRoutes = () => {
   return (
     <Routes>
       {/* Public */}
-      <Route path="/" element={<Home />} />
-      <Route path="/product/:id" element={<ProductDetails />} />
+      <Route path="/" element={<Landing />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
 
       {/* User */}
       <Route element={<ProtectedRoute />}>
+        <Route path="/home" element={<Home />} />
+        <Route path="/product/:id" element={<ProductDetails />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/orders" element={<Orders />} />
@@ -36,8 +38,7 @@ const AppRoutes = () => {
         <Route path="/admin/products" element={<Products />} />
         <Route path="/admin/orders" element={<AdminOrders />} />
       </Route>
-    </Routes>
-  );
+    </Routes>  );
 };
 
 export default AppRoutes;
